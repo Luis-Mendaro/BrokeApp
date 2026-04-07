@@ -1,19 +1,19 @@
 import unittest
-from main import app
+from app.main import app
 
 class TestApp(unittest.TestCase):
     def setUp(self):
         self.app = app.test_client()
     
     def test_health_endpoint(self):
-        response = self.app.get('/ping')
+        response = self.app.get('/check')
         self.assertEqual(response.status_code, 200)
         data = response.get_json()
-        self.assertEqual(data['status'], 'ok')
+        self.assertEqual(data['status'], 'success')
 
     def test_hello_endpoint(self):
         response = self.app.get('/')
-        self.assertEqual(response.status_code, 2000)
+        self.assertEqual(response.status_code, 200)
         data = response.get_json()
         self.assertEqual(data['message'], 'Hello! This is a sample CI/CD application')
 

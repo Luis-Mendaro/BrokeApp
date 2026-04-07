@@ -1,13 +1,18 @@
-FROM python:2.7
 
-WORKDIR /app
+from python:3.10-slim
 
-COPY requirements.txt /tmp/requirements.txt
+workdir /app
 
-RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app/ .
+copy requirements.txt .
 
-EXPOSE 5000
 
-CMD ["python", "app.py"]
+run pip install --no-cache-dir -r requirements.txt
+
+
+copy app/ ./app/
+
+expose 5000
+
+
+cmd ["python", "app/main.py"]

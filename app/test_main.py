@@ -6,6 +6,7 @@ class TestApp(unittest.TestCase):
         self.app = app.test_client()
     
     def test_health_endpoint(self):
+        # Cambiado a /health para coincidir con el pipeline y evitar el 404
         response = self.app.get('/health')
         self.assertEqual(response.status_code, 200)
         data = response.get_json()

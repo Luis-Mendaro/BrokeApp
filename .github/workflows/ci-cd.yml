@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ dev ]
+    branches: [  ]
   pull_request:
     branches: [ main ]
 
@@ -10,7 +10,7 @@ permissions:
   contents: read
   packages: write
 
-jobs:
+jobs:main
   test:
     name: Test
     runs-on: ubuntu-latest
